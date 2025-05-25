@@ -163,3 +163,77 @@ GET
   "message": "Logged out successfully"
 }
 ```
+
+# /captains/register Endpoint Documentation
+
+## Description
+
+Registers a new captain with personal details and vehicle information.
+
+## Method
+
+POST
+
+## Endpoint
+
+`/captains/register`
+
+## Request Data
+
+- **fullname**: an object containing:
+  - **firstname** (string, required, minimum length: 3)
+  - **lastname** (string, optional, minimum length: 3 if provided)
+- **email**: string, valid email format, required
+- **password**: string, required, minimum length: 6
+- **vehicle**: an object containing:
+  - **color** (string, required)
+  - **plate** (string, required, minimum length: 6)
+  - **capacity** (integer, required, minimum: 1)
+  - **vehicleType** (string, required, one of: 'car', 'bike', 'auto')
+
+### Example Request Body
+
+```json
+{
+  "fullname": {
+    "firstname": "Alice",
+    "lastname": "Smith"
+  },
+  "email": "alice.smith@example.com",
+  "password": "secret123",
+  "vehicle": {
+    "color": "Red",
+    "plate": "ABC1234",
+    "capacity": 4,
+    "vehicleType": "car"
+  }
+}
+```
+
+## Status Codes
+
+- **201 Created**: Captain successfully registered.
+- **400 Bad Request**: Validation errors in submitted data.
+
+## Response Example
+
+### Success (201 Created)
+
+```json
+{
+  "token": "example_token",
+  "captain": {
+    "fullname": {
+      "firstname": "Alice",
+      "lastname": "Smith"
+    },
+    "email": "alice.smith@example.com",
+    "vehicle": {
+      "color": "Red",
+      "plate": "ABC1234",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  }
+}
+```
