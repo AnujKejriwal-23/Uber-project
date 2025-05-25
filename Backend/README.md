@@ -164,7 +164,7 @@ GET
 }
 ```
 
-# /captains/register Endpoint Documentation
+# `/captains/register` Endpoint
 
 ## Description
 
@@ -235,5 +235,127 @@ POST
       "vehicleType": "car"
     }
   }
+}
+```
+
+# `/captains/login` Endpoint
+
+## Description
+
+Allows a registered captain to log in using their email and password.
+
+## Method
+
+POST
+
+## Endpoint
+
+`/captains/login`
+
+## Request Data
+
+- **email**: string, valid email format, required.
+- **password**: string, required, minimum length: 6.
+
+### Example Request Body
+
+```json
+{
+  "email": "captain@example.com",
+  "password": "secret123"
+}
+```
+
+## Status Codes
+
+- **200 OK**: Captain successfully logged in.
+- **400 Bad Request**: Validation errors or invalid credentials.
+
+## Response Example
+
+### Success (200 OK)
+
+```json
+{
+  "token": "example_token",
+  "captain": {
+    "fullname": {
+      "firstname": "Alice",
+      "lastname": "Smith"
+    },
+    "email": "captain@example.com",
+    "vehicle": {
+      "color": "Red",
+      "plate": "ABC1234",
+      "capacity": 4,
+      "vehicleType": "car"
+    }
+  }
+}
+```
+
+# `/captains/profile` Endpoint
+
+## Description
+
+Retrieves the authenticated captain's profile information.
+
+## Method
+
+GET
+
+## Endpoint
+
+`/captains/profile`
+
+## Headers
+
+- **Authorization**: Bearer token (or cookie containing the token)
+
+## Response Example
+
+### Success (200 OK)
+
+```json
+{
+  "fullname": {
+    "firstname": "Alice",
+    "lastname": "Smith"
+  },
+  "email": "captain@example.com",
+  "vehicle": {
+    "color": "Red",
+    "plate": "ABC1234",
+    "capacity": 4,
+    "vehicleType": "car"
+  }
+}
+```
+
+# `/captains/logout` Endpoint
+
+## Description
+
+Logs out the authenticated captain by blacklisting the token and clearing the cookie.
+
+## Method
+
+GET
+
+## Endpoint
+
+`/captains/logout`
+
+## Headers
+
+- **Authorization**: Bearer token (or cookie containing the token)
+
+## Response Example
+
+### Success (200 OK)
+
+```json
+{
+  "message": "Logged out successfully"
 }
 ```
