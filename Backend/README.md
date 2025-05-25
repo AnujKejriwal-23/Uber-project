@@ -103,3 +103,63 @@ POST
   }
 }
 ```
+
+## `/users/profile` Endpoint
+
+### Description
+
+Retrieves the authenticated user's profile information.
+
+### Method
+
+GET
+
+### Endpoint
+
+`/users/profile`
+
+### Headers
+
+- **Authorization**: Bearer token (or cookie containing token)
+
+### Response Example
+
+#### Success (200 OK)
+
+```json
+{
+  "fullname": {
+    "firstname": "John",
+    "lastname": "Doe"
+  },
+  "email": "john.doe@example.com"
+}
+```
+
+## `/users/logout` Endpoint
+
+### Description
+
+Logs out the authenticated user by blacklisting the token and clearing the cookie.
+
+### Method
+
+GET
+
+### Endpoint
+
+`/users/logout`
+
+### Headers
+
+- **Authorization**: Bearer token (or cookie containing token)
+
+### Response Example
+
+#### Success (200 OK)
+
+```json
+{
+  "message": "Logged out successfully"
+}
+```
