@@ -164,7 +164,7 @@ GET
 }
 ```
 
-# `/captains/register` Endpoint
+## `/captains/register` Endpoint
 
 ## Description
 
@@ -238,7 +238,7 @@ POST
 }
 ```
 
-# `/captains/login` Endpoint
+## `/captains/login` Endpoint
 
 ## Description
 
@@ -294,7 +294,7 @@ POST
 }
 ```
 
-# `/captains/profile` Endpoint
+## `/captains/profile` Endpoint
 
 ## Description
 
@@ -332,7 +332,7 @@ GET
 }
 ```
 
-# `/captains/logout` Endpoint
+## `/captains/logout` Endpoint
 
 ## Description
 
